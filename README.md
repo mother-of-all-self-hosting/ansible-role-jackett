@@ -62,7 +62,7 @@ Refer to [this page](./molecule/README.md) for details about how to utilize it.
 
 ### Releases
 
-Thanks to the GitHub workflow releases are cut automatically. On every push to `develop` or `main`, [`.github/workflows/autotag.yml`](.github/workflows/autotag.yml) runs [`bin/compute-next-tag.sh`](bin/compute-next-tag.sh), which derives the tag from `jackett_version` in [`defaults/main.yml`](defaults/main.yml) and the tags that already exist:
+Thanks to the GitHub workflow releases are cut automatically. On every push to `main`, [`.github/workflows/autotag.yml`](.github/workflows/autotag.yml) runs [`bin/compute-next-tag.sh`](bin/compute-next-tag.sh), which derives the tag from `jackett_version` in [`defaults/main.yml`](defaults/main.yml) and the tags that already exist:
 
 - a Jackett version that has never been released is tagged `v<version>-0`
 - any other change under `defaults/`, `meta/`, `tasks/` or `templates/` rolls the counter (`v<version>-1`, `v<version>-2`, …)
