@@ -62,10 +62,6 @@ Refer to [this page](./molecule/README.md) for details about how to utilize it.
 
 ### Releases
 
-Thanks to the GitHub workflow releases are cut automatically. On every push to `main`, [`.github/workflows/autotag.yml`](.github/workflows/autotag.yml) runs [`bin/compute-next-tag.sh`](bin/compute-next-tag.sh), which derives the tag from `jackett_version` in [`defaults/main.yml`](defaults/main.yml) and the tags that already exist:
+Tags are created on the GitHub workflow by [`.github/workflows/autotag.yml`](.github/workflows/autotag.yml), which asks [`bin/compute-next-tag.sh`](bin/compute-next-tag.sh) what the commit on `main` should be released as. The answer comes from the version pinned in [`defaults/main.yml`](defaults/main.yml) and from the tags that already exist, so a commit that only touches documentation or CI is not released at all, and any change to the role itself is — without waiting for a dependency bump to carry it along.
 
-- a Jackett version that has never been released is tagged `v<version>-0`
-- any other change under `defaults/`, `meta/`, `tasks/` or `templates/` rolls the counter (`v<version>-1`, `v<version>-2`, …)
-- a change that touches nothing else - documentation, CI configuration, the Molecule scenario - is not released
-
-Because the tag is derived from the state of the repository rather than from commit messages, it does not matter in which order pull requests are merged, and nobody has to remember to tag anything. [`bin/test-compute-next-tag.sh`](bin/test-compute-next-tag.sh) exercises the computation against throwaway repositories and runs as a pre-commit hook whenever the version or the script changes.
+[`bin/test-compute-next-tag.sh`](bin/test-compute-next-tag.sh) exercises that script against throwaway repositories, and runs as a prek hook.
