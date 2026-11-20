@@ -25,7 +25,6 @@
   with_items:
     - jackett_uid
     - jackett_gid
-    - jackett_hostname
 
 - name: Fail if Jackett architecture is not supported
   ansible.builtin.fail:
