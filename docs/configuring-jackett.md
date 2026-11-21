@@ -56,8 +56,7 @@ jackett_hostname: "example.com"
 
 After adjusting the hostname, make sure to adjust your DNS records to point the domain to your server.
 
->[!NOTE]
-> The `jackett_path_prefix` variable can be adjusted to host under a subpath (e.g. `jackett_path_prefix: /jackett`), but this hasn't been tested yet.
+**Note**: hosting Jackett under a subpath (by configuring the `jackett_path_prefix` variable) does not seem to be possible due to Jackett's technical limitations.
 
 ### Mounting additional data directories (optional)
 
