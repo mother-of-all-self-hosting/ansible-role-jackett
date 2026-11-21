@@ -49,7 +49,7 @@ Currently there is one testing scenario available.
 
 Tests a standard Jackett installation, and checks that the role's configuration reaches the process.
 
-The scenario deliberately configures the role with values nothing else would produce - uid/gid `1717`, the timezone `Asia/Tokyo`, the hostname `jackett.molecule.local`, the path prefix `/jackett-ui`, an extra read-only bind mount, an extra label and an extra container argument - and then looks for each of them on the running container.
+The scenario deliberately configures the role with values nothing else would produce - uid/gid `1717`, the timezone `Asia/Tokyo`, the hostname `jackett.molecule.local`, an extra read-only bind mount, an extra label and an extra container argument - and then looks for each of them on the running container.
 
 Check the comments on [`molecule/default/verify.yml`](molecule/default/verify.yml) for details about what to be verified.
 

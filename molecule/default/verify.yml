@@ -18,7 +18,6 @@
     jackett_expected_uid: 1717
     jackett_expected_gid: 1717
     jackett_expected_hostname: jackett.molecule.local
-    jackett_expected_path_prefix: /jackett-ui
     jackett_expected_timezone: Asia/Tokyo
     jackett_expected_timezone_abbreviation: JST
 
@@ -204,11 +203,10 @@
           ansible.builtin.assert:
             that:
               - jackett_container.Config.Labels['traefik.enable'] == 'true'
-              - jackett_container.Config.Labels['traefik.http.routers.jackett.rule'] == 'Host(`' ~ jackett_expected_hostname ~ '`) && PathPrefix(`' ~ jackett_expected_path_prefix ~ '`)'
-              - jackett_container.Config.Labels['traefik.http.middlewares.jackett-strip-prefix.stripprefix.prefixes'] == jackett_expected_path_prefix
+              - jackett_container.Config.Labels['traefik.http.routers.jackett.rule'] == 'Host(`' ~ jackett_expected_hostname ~ '`)'
               - jackett_container.Config.Labels['traefik.http.services.jackett.loadbalancer.server.port'] == '9117'
             fail_msg: "The Traefik labels are not what templates/labels.j2 should have produced: {{ jackett_container.Config.Labels }}"
-            success_msg: "The Traefik labels route {{ jackett_expected_hostname }}{{ jackett_expected_path_prefix }} to port 9117"
+            success_msg: "The Traefik labels route {{ jackett_expected_hostname }} to port 9117"
 
         - name: Assert that the additional labels and extra arguments reached the container
           ansible.builtin.assert:

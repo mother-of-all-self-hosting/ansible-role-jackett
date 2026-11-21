@@ -66,10 +66,6 @@ provisioner:
 
         jackett_hostname: jackett.molecule.local
 
-        # A non-root path prefix exercises the strip-prefix and slashless
-        # redirect middlewares in templates/labels.j2.
-        jackett_path_prefix: /jackett-ui
-
         # Bound to the loopback interface of the test container only. Nothing
         # is published to the machine running Molecule, so two scenarios can
         # run side by side without fighting over a port.
