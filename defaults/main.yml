@@ -28,6 +28,9 @@ jackett_hostname: ""
 
 # The path at which Jackett is served.
 # This value must either be `/` or not end with a slash (e.g. `/jackett`).
+#
+# Hosting Jackett under a subpath does not seem to be possible due to Jackett's
+# technical limitations.
 jackett_path_prefix: /
 
 jackett_container_image: "{{ jackett_container_image_registry_prefix }}linuxserver/jackett:{{ jackett_container_image_tag }}"
